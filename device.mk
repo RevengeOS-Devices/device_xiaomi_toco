@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Get non-open-source specific aspects
-#$(call inherit-product-if-exists, vendor/xiaomi/tucana/tucana-vendor.mk)
+$(call inherit-product-if-exists, vendor/xiaomi/tucana/tucana-vendor.mk)
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 29
