@@ -34,7 +34,7 @@ cc_binary {
 }
 
 cc_library_static {
-    name: "libfod_extension.tucana",
+    name: "libfod_extension.toco",
     srcs: ["FodExtension.cpp"],
     include_dirs: [
         "frameworks/native/services/surfaceflinger/CompositionEngine/include"
