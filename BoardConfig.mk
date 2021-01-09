@@ -8,7 +8,7 @@ BOARD_VENDOR := xiaomi
 
 BUILD_BROKEN_DUP_RULES := true
 
-DEVICE_PATH := device/xiaomi/tucana
+DEVICE_PATH := device/xiaomi/toco
 
 # Compile libhwui in perfomance mode
 HWUI_COMPILE_FOR_PERF := true
@@ -40,7 +40,7 @@ TARGET_USES_64_BIT_BINDER := true
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := tucana
+TARGET_OTA_ASSERT_DEVICE := toco
 
 # Battery
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
@@ -124,7 +124,7 @@ BOARD_HAS_QCA_FM_SOC := "cherokee"
 BOARD_HAVE_QCOM_FM := true
 
 # FOD
-TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.tucana
+TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.toco
 TARGET_USES_FOD_ZPOS := true
 
 # HIDL
@@ -132,8 +132,8 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/framework_compatibi
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_tucana
-TARGET_RECOVERY_DEVICE_MODULES := libinit_tucana
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_toco
+TARGET_RECOVERY_DEVICE_MODULES := libinit_toco
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -192,4 +192,4 @@ BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 
 # Inherit from the proprietary version
--include vendor/xiaomi/tucana/BoardConfigVendor.mk
+-include vendor/xiaomi/toco/BoardConfigVendor.mk

@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 set -e
 
-DEVICE=tucana
+DEVICE=toco
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks

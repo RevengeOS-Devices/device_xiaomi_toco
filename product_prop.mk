@@ -4,25 +4,29 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Adb
-ifeq ($(TARGET_BUILD_VARIANT),eng)
-# /vendor/default.prop is force-setting ro.adb.secure=1
-# Get rid of that by overriding it in /product on eng builds
+# ADB
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.secure=0 \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.config=mtp,adb \
     ro.adb.secure=0
-endif
 
-# Enable blurs
+# Audio
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.surface_flinger.supports_background_blur=1 \
-    ro.sf.blurs_are_expensive=1
+    ro.config.media_vol_steps=25 \
+    ro.config.vc_call_vol_steps=7 \
+    debug.stagefright.omx_default_rank.sw-audio=16 \
+    ro.control_privapp_permissions=log
 
-# Misc props
+# Camera
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.oem_unlock_supported=0 \
-    ro.apex.updatable=true
+    vendor.camera.aux.packagelist=org.lineageos.snap,net.sourceforge.opencamera,com.google.android.GoogleCamera
 
-# Media
+# Charger
 PRODUCT_PRODUCT_PROPERTIES += \
-    debug.stagefright.omx_default_rank.sw-audio=16
+    ro.charger.enable_suspend=true
+
+# Graphics
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+
