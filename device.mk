@@ -168,9 +168,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service.toco
 
-# Ril
+# RCS
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.4
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
+
 # Sensor Configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sensors/hals.conf
