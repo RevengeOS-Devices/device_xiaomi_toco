@@ -165,13 +165,6 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
-# Overlays - override vendor ones
-PRODUCT_PACKAGES += \
-    FrameworksResCommon \
-    FrameworksResTarget \
-    DevicesOverlay \
-    DevicesAndroidOverlay
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.ims.xml \
@@ -214,6 +207,30 @@ PRODUCT_BOOT_JARS += \
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
+
+# Vendor Overlays
+PRODUCT_PACKAGES += \
+    AospFrameworkResOverlay \
+    AospWifiResOverlay \
+    CarrierConfigResCommon \
+    CellBroadcastReceiverResCommon \
+    DevicesAndroidOverlay \
+    DevicesOverlay \
+    DocumentsUIOverlay \
+    ElderlyNavigationBarOverlay \
+    FrameworksResCommon \
+    FrameworksResTarget \
+    GestureLineOverlay \
+    MccMncOverlay \
+    MiuiBiometricResOverlay \
+    MiuiBluetoothOverlay \
+    MiuiFrameworkResOverlay \
+    MiuiSettingsResOverlay \
+    MiuiSystemUIResOverlay \
+    OptInAppOverlay \
+    SystemUIResCommon \
+    TelecommResCommon \
+    TelephonyResCommon
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor-overlay/etc/dsi_xiaomi_f4_36_02_0b_fhd_cmd_display_mi.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/dsi_xiaomi_f4_36_02_0b_fhd_cmd_display_mi.xml \
