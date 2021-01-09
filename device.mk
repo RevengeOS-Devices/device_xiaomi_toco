@@ -165,6 +165,9 @@ PRODUCT_PACKAGES += \
 # Ril
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.4
+# Sensor Configuration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sensors/hals.conf
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
