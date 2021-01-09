@@ -21,4 +21,4 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi Note 10 Lite
 PRODUCT_MANUFACTURER := Xiaomi
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+BUILD_FINGERPRINT := Xiaomi/toco_global/toco:10/QKQ1.190825.002/V12.0.3.0.QFNMIXM:user/release-keys
