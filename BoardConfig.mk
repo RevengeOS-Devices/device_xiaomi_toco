@@ -70,16 +70,6 @@ TARGET_USE_QTI_BT_STACK := true
 TARGET_USES_QTI_CAMERA_DEVICE := true
 TARGET_CAMERA_BOOTTIME_TIMESTAMP := true
 
-# Charger Mode
-BOARD_CHARGER_ENABLE_SUSPEND := true
-
-# Dex
-ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
-  endif
-endif
-
 # Display
 TARGET_USES_HWC2 := true
 TARGET_HAS_HDR_DISPLAY := true
@@ -180,16 +170,35 @@ TARGET_USES_MKE2FS := true
 # RenderScript
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
+# Sepolicy
+SELINUX_IGNORE_NEVERALLOWS := true
+SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR := $(DEVICE_PATH)/sepolicy/private
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
+
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/private \
+    device/qcom/sepolicy/qva/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/generic/public/attribute \
+    device/qcom/sepolicy/qva/public \
+    device/qcom/sepolicy/qva/public/attribute
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/public \
+    device/qcom/sepolicy/qva/product/public
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/private \
+    device/qcom/sepolicy/qva/product/private
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
-# Sepolicy
-SELINUX_IGNORE_NEVERALLOWS := true
-include device/qcom/sepolicy/SEPolicy.mk
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
 # Treble
 BOARD_VNDK_VERSION := current
