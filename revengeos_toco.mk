@@ -9,6 +9,9 @@ $(call inherit-product, device/xiaomi/toco/device.mk)
 # Inherit some common RevengeOS stuff.
 $(call inherit-product, vendor/revengeos/config/common.mk)
 
+# Official-ify
+REVENGEOS_BUILDTYPE := OFFICIAL
+
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
