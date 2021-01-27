@@ -99,7 +99,7 @@ PRODUCT_COPY_FILES += \
 TARGET_HAS_FOD := true
 
 # FM
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
     qcom.fmradio
@@ -156,10 +156,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
 
-# Notch style overlay
-PRODUCT_PACKAGES += \
-    NotchNoFillOverlay
-
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
@@ -167,6 +163,10 @@ PRODUCT_PACKAGES += \
     NfcNci \
     SecureElement \
     Tag
+
+# Notch style overlay
+PRODUCT_PACKAGES += \
+    NotchNoFillOverlay
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -222,6 +222,7 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
 
+# Vendor overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor-overlay/etc/dsi_xiaomi_f4_36_02_0b_fhd_cmd_display_mi.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/dsi_xiaomi_f4_36_02_0b_fhd_cmd_display_mi.xml \
     $(LOCAL_PATH)/vendor-overlay/etc/dsi_xiaomi_f4_41_06_0a_fhd_cmd_display_mi.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/dsi_xiaomi_f4_41_06_0a_fhd_cmd_display_mi.xml \
