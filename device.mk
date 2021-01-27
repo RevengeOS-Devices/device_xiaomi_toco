@@ -101,6 +101,11 @@ PRODUCT_COPY_FILES += \
 
 TARGET_HAS_FOD := true
 
+# FIXME: master: compat for libprotobuf
+# See https://android-review.googlesource.com/c/platform/prebuilts/vndk/v28/+/1109518
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-vendorcompat
+
 # FM
 # PRODUCT_PACKAGES += \
     FM2 \
