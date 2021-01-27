@@ -128,6 +128,8 @@ void vendor_load_properties() {
         set_ro_product_prop(source, "device", "toco");
         set_ro_product_prop(source, "model", "Mi Note 10 Lite");
     }
+    property_override("ro.boot.verifiedbootstate", "green");
+    property_override("ro.oem_unlock_supported", "0");
     property_override("ro.build.fingerprint", fp);
     property_override("ro.bootimage.build.fingerprint", fp);
     property_override("ro.system_ext.build.fingerprint", fp);
