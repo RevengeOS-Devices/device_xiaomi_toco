@@ -8,6 +8,12 @@ dalvik.vm.boot-dex2oat-threads=8
 dalvik.vm.dex2oat-threads=4
 dalvik.vm.image-dex2oat-threads=4
 
+# Netflix custom property
+ro.netflix.bsp_rev=Q6150-17263-1
+
+# Set stock DPI
+ro.sf.lcd_density=440
+
 # FOD
 persist.vendor.sys.fp.fod.location.X_Y=445,1715
 persist.vendor.sys.fp.fod.size.width_height=190,190
