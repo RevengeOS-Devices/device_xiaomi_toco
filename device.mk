@@ -143,6 +143,7 @@ PRODUCT_BOOT_JARS += \
 
 # Init
 PRODUCT_PACKAGES += \
+    init.device.rc \
     init.mi_thermald.rc \
     init.qcom.rc \
     init.recovery.qcom.rc
@@ -190,7 +191,6 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Overlays - override vendor ones
 PRODUCT_PACKAGES += \
-    FrameworksResCommon \
     FrameworksResTarget \
     DevicesOverlay \
     DevicesAndroidOverlay
