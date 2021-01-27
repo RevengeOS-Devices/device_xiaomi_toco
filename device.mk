@@ -64,7 +64,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    GCamGOPrebuilt
+    GCamGOPrebuilt \
+    vendor.qti.hardware.camera.device@1.0
 
 # Charger
 PRODUCT_PACKAGES += \
