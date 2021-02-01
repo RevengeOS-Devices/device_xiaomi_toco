@@ -6,9 +6,12 @@
 
 BOARD_VENDOR := xiaomi
 
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 DEVICE_PATH := device/xiaomi/toco
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Compile libhwui in performance mode
 HWUI_COMPILE_FOR_PERF := true
@@ -73,12 +76,13 @@ TARGET_CAMERA_BOOTTIME_TIMESTAMP := true
 # Display
 TARGET_USES_HWC2 := true
 TARGET_HAS_HDR_DISPLAY := true
+TARGET_SCREEN_DENSITY := 440
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
 
 # FM
 BOARD_HAS_QCA_FM_SOC := "cherokee"

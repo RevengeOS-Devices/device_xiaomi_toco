@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019-2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,30 +19,36 @@
 #include "FingerprintInscreen.h"
 
 #include <android-base/logging.h>
-#include <hardware_legacy/power.h>
-#include <cmath>
 #include <fstream>
+#include <cmath>
+#include <hardware_legacy/power.h>
+
+#define FINGERPRINT_ACQUIRED_VENDOR 6
 
 #define COMMAND_NIT 10
 #define PARAM_NIT_FOD 1
 #define PARAM_NIT_NONE 0
 
 #define TOUCH_FOD_ENABLE 10
-#define TOUCH_AOD_ENABLE 11
 
-#define FOD_SENSOR_X 465
-#define FOD_SENSOR_Y 1735
-#define FOD_SENSOR_SIZE 192
+
+#define FOD_SENSOR_X 445
+#define FOD_SENSOR_Y 1715
+#define FOD_SENSOR_SIZE 190
 
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
-namespace vendor {
-namespace lineage {
-namespace biometrics {
-namespace fingerprint {
-namespace inscreen {
-namespace V1_0 {
-namespace implementation {
+#define DISPPARAM_PATH "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param"
+#define DISPPARAM_HBM_FOD_ON "0x20000"
+#define DISPPARAM_HBM_FOD_OFF "0xE0000"
+
+namespace {
+
+template <typename T>
+static void set(const std::string& path, const T& value) {
+    std::ofstream file(path);
+    file << value;
+}
 
 template <typename T>
 static T get(const std::string& path, const T& def) {
@@ -53,14 +59,19 @@ static T get(const std::string& path, const T& def) {
     return file.fail() ? def : result;
 }
 
-template <typename T>
-static void set(const std::string& path, const T& value) {
-    std::ofstream file(path);
-    file << value;
-}
+}  // anonymous namespace
+
+namespace vendor {
+namespace lineage {
+namespace biometrics {
+namespace fingerprint {
+namespace inscreen {
+namespace V1_0 {
+namespace implementation {
 
 FingerprintInscreen::FingerprintInscreen() {
-    TouchFeatureService = ITouchFeature::getService();
+    displayFeatureService = IDisplayFeature::getService();
+    touchFeatureService = ITouchFeature::getService();
     xiaomiFingerprintService = IXiaomiFingerprint::getService();
 }
 
@@ -86,23 +97,29 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     acquire_wake_lock(PARTIAL_WAKE_LOCK, LOG_TAG);
+    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_ON);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_FOD);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
+    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
+    touchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
-    TouchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
     release_wake_lock(LOG_TAG);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    TouchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 1);
+    displayFeatureService->setFeature(0, 17, 1, 1);
+    touchFeatureService->setTouchMode(TOUCH_FOD_ENABLE, 1);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
+    touchFeatureService->resetTouchMode(TOUCH_FOD_ENABLE);
+    displayFeatureService->setFeature(0, 17, 0, 1);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
     return Void();
 }
 
@@ -121,14 +138,16 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    float alpha;
     int realBrightness = get(BRIGHTNESS_PATH, 0);
+    float alpha;
 
     if (realBrightness > 500) {
         alpha = 1.0 - pow(realBrightness / 2047.0 * 430.0 / 600.0, 0.455);
     } else {
         alpha = 1.0 - pow(realBrightness / 1680.0, 0.455);
     }
+
+    if (alpha < 0.82) alpha += 0.1;
 
     return 255 * alpha;
 }

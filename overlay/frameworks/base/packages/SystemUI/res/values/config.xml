@@ -27,7 +27,8 @@
     <bool name="doze_proximity_check_before_pulse">false</bool>
     
     <!-- Max visible notification icons -->
-    <integer name="config_maxVisibleNotificationIcons">3</integer>
+    <integer name="config_maxVisibleNotificationIcons">4</integer>
+    <integer name="config_maxVisibleNotificationIconsOnLock">4</integer>
     <integer name="config_maxVisibleNotificationIconsWhenDark">4</integer>
     
     <!-- Color of the FOD view -->
