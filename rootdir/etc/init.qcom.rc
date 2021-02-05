@@ -1,3 +1,9 @@
+import /system/etc/init/init.safailnet.rc
+
+on boot
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+
 on property:vendor.post_boot.parsed=1
 # Enable ZRAM on boot_complete
     rm /data/unencrypted/zram_swap
@@ -5,6 +11,7 @@ on property:vendor.post_boot.parsed=1
     write /proc/sys/vm/swappiness 50
 
 on post-fs-data
+    mount none /vendor/etc/audio/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
     write /sys/class/drm/card0-DSI-1/dim_layer_enable 1
     mount none dev/null /vendor/lib/soundfx/libvolumelistener.so bind
     mount none dev/null /vendor/lib64/soundfx/libvolumelistener.so bind
