@@ -14,5 +14,7 @@ allow init firmware_file:filesystem getattr;
 allow init null_device:chr_file mounton;
 allow init sysfs:file setattr;
 allow init system_file:file mounton;
-
-
+allow init vendor_configs_file:file mounton;
+allow init hal_displayfeature_xiaomi_default:binder { call };
+allow init hal_touchfeature_xiaomi_default:binder { call };
+allow init system_suspend:binder { call };

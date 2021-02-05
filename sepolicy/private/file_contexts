@@ -25,3 +25,5 @@
 
 # Kernel modules in /system
 /system/lib/modules(/.*)?    u:object_r:system_file:s0
+
+/(product|system/product)/bin/dpmd             u:object_r:dpmd_product_exec:s0
