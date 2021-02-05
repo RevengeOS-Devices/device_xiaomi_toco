@@ -193,6 +193,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Overlays - override vendor ones
 PRODUCT_PACKAGES += \
+    FrameworksResCommon \
     FrameworksResTarget \
     DevicesOverlay \
     DevicesAndroidOverlay
