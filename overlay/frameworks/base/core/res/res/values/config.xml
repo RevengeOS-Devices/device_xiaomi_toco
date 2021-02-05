@@ -774,7 +774,7 @@
     <bool name="config_supportsScreenOffInDisplayFingerprint">true</bool>
 
     <!-- FOD Icon Dimming -->
-    <bool name="config_targetUsesInKernelDimming">false</bool>
+    <bool name="config_targetUsesInKernelDimming">true</bool>
 
     <!-- Whether the device supports Smart Pixels -->
     <bool name="config_enableSmartPixels">true</bool>
