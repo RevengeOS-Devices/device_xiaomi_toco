@@ -66,10 +66,6 @@ PRODUCT_PACKAGES += \
     GCamGOPrebuilt \
     vendor.qti.hardware.camera.device@1.0
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # Component overrides
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
