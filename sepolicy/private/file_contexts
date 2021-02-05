@@ -1,6 +1,10 @@
 # Data files
 /data/display(/.*)?      u:object_r:display_data_file:s0
 
+# Executables
+/data/vendor/metadata_apex(/.*)?              u:object_r:apex_metadata_file:s0
+/data/vendor/metadata_apex/sessions(/.*)?     u:object_r:apex_metadata_file:s0
+
 # Files in rootfs
 /dsp(/.*)?              u:object_r:adsprpcd_file:s0
 /firmware(/.*)?         u:object_r:firmware_file:s0
