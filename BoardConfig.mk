@@ -92,6 +92,9 @@ BOARD_HAVE_QCOM_FM := true
 TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.toco
 TARGET_USES_FOD_ZPOS := true
 
+# FOD key for InputDispatcher to skip
+TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 338
+
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 
