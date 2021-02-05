@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--
 /*
 ** Copyright 2020, The Android Open Source Project
@@ -16,9 +16,11 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Whether the display cutout region of the main built-in display should be forced to
-         black in software (to avoid aliasing or emulate a cutout that is not physically existent).
-         -->
-    <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
-</resources>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.waveproject.overlay.notch.hide.systemui">
+    <application android:hasCode="false" />
+    <overlay
+        android:isStatic="false"
+        android:priority="10"
+        android:targetPackage="com.android.systemui"/>
+</manifest>
