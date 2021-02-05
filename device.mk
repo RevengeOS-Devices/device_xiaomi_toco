@@ -228,6 +228,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/xiaomi \
     vendor/nxp/opensource/sn100x
 
+# SystemUI and Gapps
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-gapps.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gapps.xml
+
 # System Helper
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.systemhelper@1.0
