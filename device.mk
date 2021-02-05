@@ -77,7 +77,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/parts/privapp-permissions-parts.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-parts.xml
-	
+
 # Display/Graphics
 PRODUCT_PACKAGES += \
     libdisplayconfig \
@@ -112,14 +112,15 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
-# fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-
-# fwk-detect
+# Framework detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti
+
+# Fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
 # HIDL
 PRODUCT_PACKAGES += \
