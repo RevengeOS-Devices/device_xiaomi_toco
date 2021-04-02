@@ -9,6 +9,8 @@ include device/xiaomi/sm6150-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/xiaomi/toco
 
+BUILD_BROKEN_DUP_RULES := true
+
 # FOD
 TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.toco
 TARGET_USES_FOD_ZPOS := true
