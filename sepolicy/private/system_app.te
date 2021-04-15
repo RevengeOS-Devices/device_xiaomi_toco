@@ -8,3 +8,8 @@ allow system_app sysfs_kgsl:file r_file_perms;
 allow system_app sysfs_graphics:dir search;
 allow system_app sysfs_graphics:file r_file_perms;
 get_prop(system_app, vendor_camera_prop);
+
+# Added
+allow system_app proc_pagetypeinfo:file { getattr open read };
+allow system_app sysfs_zram:dir { search };
+allow system_app sysfs_zram:file { getattr open read };

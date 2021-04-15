@@ -1,0 +1,2 @@
+allow permissioncontroller_app adbd_prop:file { open };
+allow permissioncontroller_app theme_prop:file { read };

@@ -1,6 +1,10 @@
 # Data files
 /data/display(/.*)?      u:object_r:display_data_file:s0
 
+# Executables
+/data/vendor/metadata_apex(/.*)?              u:object_r:apex_metadata_file:s0
+/data/vendor/metadata_apex/sessions(/.*)?     u:object_r:apex_metadata_file:s0
+
 # Files in rootfs
 /dsp(/.*)?              u:object_r:adsprpcd_file:s0
 /firmware(/.*)?         u:object_r:firmware_file:s0
@@ -8,8 +12,9 @@
 /persist(/.*)?          u:object_r:persist_file:s0
 
 # HALs
-/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware\.light@2\.0-service    u:object_r:hal_light_default_exec:s0
 /(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware.power@1\.2-service	u:object_r:hal_power_default_exec:s0
+/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1(/.*)?    u:object_r:sysfs_graphics:s0
+/sys/class/backlight/panel0-backlight(/.*)?    u:object_r:sysfs_graphics:s0
 
 
 # Vendor overlay
@@ -21,3 +26,5 @@
 
 # Kernel modules in /system
 /system/lib/modules(/.*)?    u:object_r:system_file:s0
+
+/(product|system/product)/bin/dpmd             u:object_r:dpmd_product_exec:s0

@@ -58,7 +58,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    BluetoothQti \
     vendor.qti.hardware.btconfigstore@1.0 \
     vendor.qti.hardware.btconfigstore@2.0
 
@@ -67,9 +66,9 @@ PRODUCT_PACKAGES += \
     GCamGOPrebuilt \
     vendor.qti.hardware.camera.device@1.0
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
+# Component overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
 
 # Device-specific settings
 PRODUCT_PACKAGES += \
@@ -77,7 +76,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/parts/privapp-permissions-parts.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-parts.xml
-	
+
 # Display/Graphics
 PRODUCT_PACKAGES += \
     libdisplayconfig \
@@ -107,19 +106,20 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat
 
 # FM
-# PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
     qcom.fmradio
 
-# fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-
-# fwk-detect
+# Framework detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti
+
+# Fstab
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -146,11 +146,12 @@ PRODUCT_PACKAGES += \
     init.device.rc \
     init.mi_thermald.rc \
     init.qcom.rc \
-    init.recovery.qcom.rc
+    init.recovery.qcom.rc \
+    init.safailnet.rc
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -181,9 +182,10 @@ PRODUCT_PACKAGES += \
     SecureElement \
     Tag
 
-# Notch style overlay
+# Notch hide overlay
 PRODUCT_PACKAGES += \
-    NotchNoFillOverlay
+    NotchHideOverlay \
+    NotchHideOverlaySystemUI
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -191,6 +193,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Overlays - override vendor ones
 PRODUCT_PACKAGES += \
+    FrameworksResCommon \
     FrameworksResTarget \
     DevicesOverlay \
     DevicesAndroidOverlay
@@ -202,6 +205,7 @@ PRODUCT_COPY_FILES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.software.controls.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.controls.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.wifi.aware.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.wifi.aware.xml \
@@ -222,7 +226,16 @@ PRODUCT_HOST_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/xiaomi \
     vendor/nxp/opensource/sn100x
+
+# SystemUI and Gapps
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-gapps.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-gapps.xml
+
+# System Helper
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.systemhelper@1.0
 
 # Telephony
 PRODUCT_PACKAGES += \
