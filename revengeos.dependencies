@@ -3,5 +3,11 @@
     "remote": "devices",
     "repository"  : "vendor_xiaomi_toco",
     "target_path" : "vendor/xiaomi/toco"
+  },
+  {
+    "remote": "github",
+    "repository"  : "AndroidHQ254/android_hardware_xiaomi",
+    "target_path" : "hardware/xiaomi",
+    "branch": "lineage-18.1"
   }
 ]
