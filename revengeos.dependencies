@@ -1,0 +1,7 @@
+[
+  {
+    "remote": "devices",
+    "repository"  : "vendor_xiaomi_toco",
+    "target_path" : "vendor/xiaomi/toco"
+  }
+]
