@@ -11,10 +11,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from toco device
 $(call inherit-product, device/xiaomi/toco/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common RevengeOS stuff.
+$(call inherit-product, vendor/revengeos/config/common.mk)
 
-PRODUCT_NAME := lineage_toco
+TARGET_BOOT_ANIMATION_RES := 1080
+REVENGEOS_BUILDTYPE := OFFICIAL
+
+# Device identifier. This must come after all inclusions.
+PRODUCT_NAME := revengeos_toco
 PRODUCT_DEVICE := toco
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi Note 10 Lite

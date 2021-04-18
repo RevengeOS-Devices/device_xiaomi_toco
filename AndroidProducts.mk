@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_toco.mk
+    $(LOCAL_DIR)/revengeos_toco.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_toco-user \
-    lineage_toco-userdebug \
-    lineage_toco-eng
+    revengeos_toco-user \
+    revengeos_toco-userdebug \
+    revengeos_toco-eng
