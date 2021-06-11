@@ -9,7 +9,7 @@
         "remote":       "github",
         "repository":   "AndroidHQ254/vendor_xiaomi",
         "target_path":  "vendor/xiaomi",
-        "branch":       "11"
+        "branch":       "hw"
     },
     {
         "remote":       "github",
