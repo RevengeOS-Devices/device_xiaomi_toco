@@ -22,5 +22,10 @@
         "repository":   "LineageOS/android_hardware_xiaomi",
         "target_path":  "hardware/xiaomi",
         "branch":       "lineage-18.1"
-    }
+    },
+    {
+        "remote":       "github",
+        "repository":   "chiru2000/vendor_xiaomi_google",
+        "target_path":  "vendor/xiaomi/google",
+        "revision":     "master"
 ]
