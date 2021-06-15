@@ -25,8 +25,8 @@
     },
     {
         "remote":       "github",
-        "repository":   "chiru2000/vendor_xiaomi_google",
+        "repository":   "AndroidHQ254/vendor_xiaomi_google",
         "target_path":  "vendor/xiaomi/google",
-        "revision":     "master"
+        "revision":     "r11.0"
     }
 ]
