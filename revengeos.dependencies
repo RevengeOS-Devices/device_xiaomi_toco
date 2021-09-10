@@ -3,7 +3,7 @@
         "remote":       "github",
         "repository":   "vantoman/kernel_xiaomi_sm6150",
         "target_path":  "kernel/xiaomi/sm6150",
-        "branch":       "android11"
+        "branch":       "eleven"
     },
     {
         "remote":       "github",
@@ -15,7 +15,7 @@
         "remote":       "github",
         "repository":   "AndroidHQ254/android_device_xiaomi_sm6150-common",
         "target_path":  "device/xiaomi/sm6150-common",
-        "branch":       "2.1"
+        "branch":       "ros"
     },
     {
         "remote":       "github",
